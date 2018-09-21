@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" style="background: honeydew">
+<head>
+  <meta charset="utf-8">
+  <title>Rock, Paper, Scissors</title>
+</head>
+<body>
+
+  <script>
+    const computerPlay = (rand) => {
+      const options = ['rock', 'paper', 'scissors'];
+      return options[Math.floor(rand*3)];
+    }
+
+    const oneRound = (playerSelection, computerSelection) => {
+      console.log(`Computer picks ${computerSelection}`);
+      const playerSelectionLower = playerSelection.toLowerCase();
+
+      const roundResult = {
+        playerResult: '',
+        message: ''
+      }
+
+      if (playerSelectionLower === 'paper') {
+         roundResult.message = computerSelection === 'rock' ?     'You win! Paper beats rock.' :
+                               computerSelection === 'scissors' ? 'You lose! Scissors beats paper.' :
+                                                                  'It\'s a tie!';
+      }
+      else if (playerSelectionLower === 'scissors') {
+        roundResult.message = computerSelection === 'paper' ? 'You win! Scissors beats paper.' :
+                              computerSelection === 'rock' ?  'You lose! Rock beats scissors.' :
+                                                              'It\'s a tie!';
+      }
+      else if (playerSelectionLower === 'rock') {
+        roundResult.message = computerSelection === 'scissors' ?  'You win! Rock beats scissors.' :
+                              computerSelection === 'paper' ?     'You lose! Paper beats rock.' :
+                                                                  'It\'s a tie!';
+      } else {
+        // Default should only be reached if player input is invalid
+        roundResult.message = 'That\'s not a valid play! Please input "rock," "paper," or "scissors."';
+      }
+
+      roundResult.playerResult = roundResult.message.split(' ').length === 5 ? roundResult.message.split(' ')[1].slice(0,-1) : 'tie';
+
+      return roundResult;
+    }
+
+    const game = () => {
+      const score = {
+        player: 0,
+        computer: 0
+      }
+
+      while (score.player < 3 && score.computer < 3) {
+        const playerPicks = prompt('Rock, Paper, Scissors, SHOOT!');
+        const computerPicks = computerPlay(Math.random());
+
+        const thisRound = oneRound(playerPicks, computerPicks);
+
+        console.log(thisRound.message);
+        if (thisRound.playerResult === 'win') {
+          score.player++;
+        } else if (thisRound.playerResult === 'lose') {
+          score.computer++;
+        }
+
+        if (score.player < 3 && score.computer < 3) {
+          const winningOrLosing = score.player > score.computer ? 'You are ahead' :
+                                  score.player === score.computer ? 'Tie game' :
+                                                                  'You are losing';
+          console.log(`${winningOrLosing}, ${score.player} to ${score.computer}.`);
+        }
+      }
+      console.log(`*** Final Score ***\nPlayer: ${score.player}\nComputer: ${score.computer}`);
+      return score.player === 3 ? 'Congratulations, you win!' : 'Sorry, you lost. Better luck next time!';
+    }
+
+  </script>
+
+</body>
+</html>
