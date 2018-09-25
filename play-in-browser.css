@@ -14,7 +14,7 @@ html {
 }
 
 .game__container--active {
-  margin-top: 30vh;
+  margin-top: 25vh;
 }
 
 .game__buttons {
@@ -65,12 +65,12 @@ html {
   flex-flow: column-reverse nowrap;
   justify-content: flex-end;
   overflow: hidden;
-  max-height: 10em;
+  max-height: 13.5em;
 }
 
 .message {
   display: block;
-  margin: 0;
+  margin: 0 0 1rem 0;
 }
 
 .message--vs {
