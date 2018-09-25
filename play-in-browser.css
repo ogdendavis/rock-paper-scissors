@@ -1,0 +1,91 @@
+html {
+  background-color: honeydew;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.game__container {
+  position: relative;
+  height: auto;
+  width: auto;
+  margin: 10vh auto;
+  display: flex;
+  flex-flow: column wrap;
+  transition: 1s;
+}
+
+.game__container--active {
+  margin-top: 30vh;
+}
+
+.game__buttons {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.game__icon {
+  cursor: pointer;
+  border-radius: 50%;
+  width: 120px;
+  margin: 10px 25px;
+  transition: 1s;
+}
+
+.game__icon--pre-load {
+  width: 80px;
+  margin: 10px 10px;
+}
+
+.clicking {
+  transform: scale(1.5);
+}
+
+.game__console {
+  cursor: default;
+  display: flex;
+  flex-flow: column wrap;
+  align-content: center;
+  opacity: 1;
+  transition: 1s;
+}
+
+.game__console--pre-load {
+  opacity: 0;
+}
+
+.console__score {
+  display: inline-block;
+  margin: 1em;
+  font-weight: 700;
+}
+
+.console__messages {
+  display: flex;
+  flex-flow: column-reverse nowrap;
+  justify-content: flex-end;
+  overflow: hidden;
+  max-height: 10em;
+}
+
+.message {
+  display: block;
+  margin: 0;
+}
+
+.message--vs {
+  display: inline-block;
+  margin: 0 0.5rem;
+  transform: translateY(-50%);
+}
+
+.message__icon {
+  height: 2rem;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  right: 2rem;
+  font-size: 0.75rem;
+}
